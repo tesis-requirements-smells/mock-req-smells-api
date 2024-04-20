@@ -1,0 +1,94 @@
+[
+    {
+        "report_id": 2,
+        "report_name": "Evaluaci\u00f3n de ejemplo # 2",
+        "report_date": "2024-04-11T12:34:56",
+        "report_overall_score": 70.12,
+        "report_requirements": [
+            {
+                "req_id": 1,
+                "req_code": "HU001",
+                "req_name": "Inicio de sesi\u00f3n"
+            }
+        ]
+    },
+    {
+        "report_id": 3,
+        "report_name": "Evaluaci\u00f3n de ejemplo # 3",
+        "report_date": "2024-04-11T12:34:56",
+        "report_overall_score": 10.12,
+        "report_requirements": [
+            {
+                "req_id": 1,
+                "req_code": "HU001",
+                "req_name": "Inicio de sesi\u00f3n"
+            },
+            {
+                "req_id": 2,
+                "req_code": "HU002",
+                "req_name": "Cerrar sesi\u00f3n"
+            },
+            {
+                "req_id": 3,
+                "req_code": "HU003",
+                "req_name": "registro"
+            },
+            {
+                "req_id": 4,
+                "req_code": "HU004",
+                "req_name": "Mostrar productos"
+            },
+            {
+                "req_id": 5,
+                "req_code": "HU005",
+                "req_name": "Eliminar producto"
+            }
+        ]
+    },
+    {
+        "report_id": 4,
+        "report_name": "Evaluaci\u00f3n de ejemplo # 4",
+        "report_date": "2024-04-08T12:34:56",
+        "report_overall_score": 20.12,
+        "report_requirements": [
+            {
+                "req_id": 1,
+                "req_code": "HU001",
+                "req_name": "Inicio de sesi\u00f3n"
+            },
+            {
+                "req_id": 2,
+                "req_code": "HU002",
+                "req_name": "Cerrar sesi\u00f3n"
+            },
+            {
+                "req_id": 3,
+                "req_code": "HU003",
+                "req_name": "registro"
+            }
+        ]
+    },
+    {
+        "report_id": 5,
+        "report_name": "Evaluaci\u00f3n de ejemplo # 5",
+        "report_date": "2024-04-10T12:34:56",
+        "report_overall_score": 40.12,
+        "report_requirements": [
+            {
+                "req_id": 1,
+                "req_code": "HU001",
+                "req_name": "Inicio de sesi\u00f3n"
+            },
+            {
+                "req_id": 2,
+                "req_code": "HU002",
+                "req_name": "Cerrar sesi\u00f3n"
+            },
+            {
+                "req_id": 3,
+                "req_code": "HU003",
+                "req_name": "registro"
+            }
+        ]
+    }
+]

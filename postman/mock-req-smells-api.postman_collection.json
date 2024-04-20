@@ -25,6 +25,47 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "delete-report",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/reqsmells/delete-report/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reqsmells",
+						"delete-report",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-report-detail (no disponible aun)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/reqsmells/get-report-detail",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reqsmells",
+						"get-report-detail"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
