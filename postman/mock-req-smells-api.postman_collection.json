@@ -1,0 +1,30 @@
+{
+	"info": {
+		"_postman_id": "baa7c728-1bcc-4e9e-b8fe-f4250bd7a912",
+		"name": "mock-req-smells-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34261382"
+	},
+	"item": [
+		{
+			"name": "get-reports-resume",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/reqsmells/get-reports-resume",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reqsmells",
+						"get-reports-resume"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
