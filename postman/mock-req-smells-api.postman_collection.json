@@ -27,6 +27,28 @@
 			"response": []
 		},
 		{
+			"name": "get-paged-reports-resume",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/reqsmells/get-reports-resume/2/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reqsmells",
+						"get-reports-resume",
+						"2",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "delete-report",
 			"request": {
 				"method": "DELETE",
@@ -48,12 +70,12 @@
 			"response": []
 		},
 		{
-			"name": "get-report-detail (no disponible aun)",
+			"name": "get-report-detail",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/reqsmells/get-report-detail",
+					"raw": "http://localhost:8080/reqsmells/get-report/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -61,7 +83,8 @@
 					"port": "8080",
 					"path": [
 						"reqsmells",
-						"get-report-detail"
+						"get-report",
+						"1"
 					]
 				}
 			},
