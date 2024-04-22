@@ -6,7 +6,6 @@
         "report_overall_score": 75.12,
         "results_by_requirement": [ 
             { 
-                "req_id": 1, 
                 "req_code": "HU001", 
                 "req_name": "Revisar solicitudes de compra",
                 "req_detail": "Como supervisor de compras, quiero poder revisar las solicitudes de compra realizadas por los departamentos internos para autorizar la adquisición de nuevos productos",
@@ -72,7 +71,6 @@
                 ]
             },
             { 
-                "req_id": 2, 
                 "req_code": "HU002", 
                 "req_name": "Incorporar artículos",
                 "req_detail": "Como administrador del sistema, quiero poder incorporar nuevos artículos al inventario para mantener actualizado el catálogo",
@@ -106,7 +104,6 @@
                 ]
             },
             { 
-                "req_id": 3, 
                 "req_code": "HU003", 
                 "req_name": "registro",
                 "req_detail": "Como administrador del sistema, quiero poder ver el total de ventas por día para identificar tendencias de venta",
@@ -190,7 +187,6 @@
         "report_overall_score": 70.12,
         "results_by_requirement": [ 
             { 
-                "req_id": 1, 
                 "req_code": "HU001", 
                 "req_name": "Revisar solicitudes de compra",
                 "req_detail": "Como supervisor de compras, quiero poder revisar las solicitudes de compra realizadas por los departamentos internos para autorizar la adquisición de nuevos productos",
@@ -224,7 +220,6 @@
                 ]
             },
             { 
-                "req_id": 2, 
                 "req_code": "HU002", 
                 "req_name": "Incorporar artículos",
                 "req_detail": "Como administrador del sistema, quiero poder incorporar nuevos artículos al inventario para mantener actualizado el catálogo",
@@ -258,7 +253,6 @@
                 ]
             },
             { 
-                "req_id": 3, 
                 "req_code": "HU003", 
                 "req_name": "registro",
                 "req_detail": "Como administrador del sistema, quiero poder ver el total de ventas por día para identificar tendencias de venta",
@@ -302,7 +296,6 @@
         "report_overall_score": 10.12,
         "results_by_requirement": [ 
             { 
-                "req_id": 1, 
                 "req_code": "HU001", 
                 "req_name": "Revisar solicitudes de compra",
                 "req_detail": "Como supervisor de compras, quiero poder revisar las solicitudes de compra realizadas por los departamentos internos para autorizar la adquisición de nuevos productos",
@@ -336,7 +329,6 @@
                 ]
             },
             { 
-                "req_id": 2, 
                 "req_code": "HU002", 
                 "req_name": "Incorporar artículos",
                 "req_detail": "Como administrador del sistema, quiero poder incorporar nuevos artículos al inventario para mantener actualizado el catálogo",
@@ -370,7 +362,6 @@
                 ]
             },
             { 
-                "req_id": 3, 
                 "req_code": "HU003", 
                 "req_name": "registro",
                 "req_detail": "Como administrador del sistema, quiero poder ver el total de ventas por día para identificar tendencias de venta",
@@ -414,7 +405,6 @@
         "report_overall_score": 20.12,
         "results_by_requirement": [ 
             { 
-                "req_id": 1, 
                 "req_code": "HU001", 
                 "req_name": "Revisar solicitudes de compra",
                 "req_detail": "Como supervisor de compras, quiero poder revisar las solicitudes de compra realizadas por los departamentos internos para autorizar la adquisición de nuevos productos",
@@ -447,8 +437,7 @@
                     }
                 ]
             },
-            { 
-                "req_id": 2, 
+            {  
                 "req_code": "HU002", 
                 "req_name": "Incorporar artículos",
                 "req_detail": "Como administrador del sistema, quiero poder incorporar nuevos artículos al inventario para mantener actualizado el catálogo",
@@ -482,7 +471,6 @@
                 ]
             },
             { 
-                "req_id": 3, 
                 "req_code": "HU003", 
                 "req_name": "registro",
                 "req_detail": "Como administrador del sistema, quiero poder ver el total de ventas por día para identificar tendencias de venta",
@@ -526,7 +514,6 @@
         "report_overall_score": 40.12,
         "results_by_requirement": [ 
             { 
-                "req_id": 1, 
                 "req_code": "HU001", 
                 "req_name": "Revisar solicitudes de compra",
                 "req_detail": "Como supervisor de compras, quiero poder revisar las solicitudes de compra realizadas por los departamentos internos para autorizar la adquisición de nuevos productos",
@@ -560,7 +547,6 @@
                 ]
             },
             { 
-                "req_id": 2, 
                 "req_code": "HU002", 
                 "req_name": "Incorporar artículos",
                 "req_detail": "Como administrador del sistema, quiero poder incorporar nuevos artículos al inventario para mantener actualizado el catálogo",
@@ -594,7 +580,6 @@
                 ]
             },
             { 
-                "req_id": 3, 
                 "req_code": "HU003", 
                 "req_name": "registro",
                 "req_detail": "Como administrador del sistema, quiero poder ver el total de ventas por día para identificar tendencias de venta",
@@ -654,8 +639,7 @@
         "report_date": "2024-04-10T12:34:56",
         "report_overall_score": 40.12,
         "results_by_requirement": [ 
-            { 
-                "req_id": 1, 
+            {  
                 "req_code": "HU001", 
                 "req_name": "Revisar solicitudes de compra",
                 "req_detail": "Como supervisor de compras, quiero poder revisar las solicitudes de compra realizadas por los departamentos internos para autorizar la adquisición de nuevos productos",
@@ -689,7 +673,6 @@
                 ]
             },
             { 
-                "req_id": 2, 
                 "req_code": "HU002", 
                 "req_name": "Incorporar artículos",
                 "req_detail": "Como administrador del sistema, quiero poder incorporar nuevos artículos al inventario para mantener actualizado el catálogo",
@@ -723,7 +706,6 @@
                 ]
             },
             { 
-                "req_id": 3, 
                 "req_code": "HU003", 
                 "req_name": "registro",
                 "req_detail": "Como administrador del sistema, quiero poder ver el total de ventas por día para identificar tendencias de venta",

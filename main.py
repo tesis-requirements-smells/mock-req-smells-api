@@ -1,6 +1,9 @@
 from flask import Flask
 from flask import jsonify
-import json
+from flask import request
+import random
+from utils import *
+
 
 app = Flask(__name__)
 
@@ -12,6 +15,8 @@ RESUME_FIELDS = ['report_id', 'report_name', 'report_date', 'report_overall_scor
 
 # json files
 REPORTS_URL = './data/reports.json'
+EVALUATION_DATA_URL = './data/evaluation-data.json'
+EVALUATION_EXAMPLE = './data/evaluation.json'
 
 
 # Listado de reportes resumido, sin paginación
@@ -78,42 +83,99 @@ def delete_report(report_id:int):
     return jsonify({'message' : response_message}), status
 
 
-def read_json(url: str):
-    with open(url, 'r', encoding='utf-8') as data_file:
-        return json.load(data_file)
+# Obtener listado de datos de evaluacion, filtrados por estado
+# ALL: todos
+# DRAFT: Evaluaciones pendientes
+# EVALUATED: Datos que ya se evaluaron
+@app.route(f'/{BASE_URL}/get-evaluation-data/<status>', methods=['GET'])
+def get_evaluation_data_list(status:str): 
+    evaluation_data = read_json(EVALUATION_DATA_URL)
+
+    # Filtrar por estado
+    if status != 'ALL':
+        evaluation_data = [d for d in evaluation_data if d['input_status'] == status]
+
+    return jsonify({
+        'results' : evaluation_data
+    })
+
+
+# Guardar datos de una evaluacion
+@app.route(f'/{BASE_URL}/save-evaluation-data', methods=['POST'])
+def save_evaluation_data():
+    input_data = request.json
+    evaluation_data = read_json(EVALUATION_DATA_URL)
+
+    # Validar si se está creando una nueva evaluacion o actualizando
+    if 'input_id' in input_data:
+        input_id = int(input_data['input_id'])
+
+        # borrar registro viejo
+        evaluation_data = [d for d in evaluation_data if d['input_id'] != input_id] 
+    else:
+        new_id = find_max_id(evaluation_data, 'input_id') + 1
+        input_data['input_id'] = new_id
+
+    # actualizar fecha de modificacion y estado
+    input_data['input_modification_date'] = get_current_date()
+    input_data['input_status'] = 'DRAFT'
+
+    evaluation_data.append(input_data)
+    write_json(EVALUATION_DATA_URL, evaluation_data)
+
+    return jsonify({'message': "Datos de entrada guardados exitosamente"}), 200
+
+
+# Eliminar evaluacion
+@app.route(f'/{BASE_URL}/delete-evaluation-data/<int:input_id>', methods=['DELETE'])
+def delete_evaluation_data(input_id:int):    
+    evaluation_data = read_json(EVALUATION_DATA_URL)
+    previous_len = len(evaluation_data)
+
+    # delete 
+    evaluation_data = [d for d in evaluation_data if d['input_id'] != input_id]
+    write_json(EVALUATION_DATA_URL, evaluation_data)
+
+    # prepare response
+    report_found = len(evaluation_data) < previous_len
+    response_message = 'Registro eliminado exitosamente' if report_found else 'No se pudo encontrar el registro para eliminar'
+    status = 200 if report_found else 404    
+
+    return jsonify({'message' : response_message}), status
+
+
+# Evaluar datos de entrada
+@app.route(f'/{BASE_URL}/evaluate', methods=['POST'])
+def evaluate_data():
+    input_data = request.json
+    input_id = int(input_data['input_id'])
+    report_name = input_data['report_name']
+
+    # Obtener datos a evaluar
+    evaluation_data = read_json(EVALUATION_DATA_URL)
+    evaluation_data = [d for d in evaluation_data if d['input_id'] == input_id]
+    evaluation_data = evaluation_data[0] if evaluation_data != None and len(evaluation_data) > 0 else None    
+    if evaluation_data is None:
+        return jsonify({'message': 'No se pudieron encontrar los datos a evaluar'}), 404
     
+    # Simular evaluacion
+    evaluation = read_json(EVALUATION_EXAMPLE)
+    reports_resume = read_json(REPORTS_URL)
+    new_id = find_max_id(reports_resume, 'report_id') + 1
+    new_report = {
+        "report_id": new_id,
+        "report_name": report_name,
+        "report_date": get_current_date(),
+        "report_overall_score": round(random.uniform(0, 100), 2),
+        "results_by_requirement": evaluation
+    }
+    reports_resume.append(new_report)
+    write_json(REPORTS_URL, reports_resume)
 
-def write_json(url: str, data:list):
-    with open(url, 'w', encoding='utf-8') as data_file:
-        json.dump(data, data_file, indent=4)
-
-
-def paginate_list(lista, page_number, page_size):
-    """
-    Function to paginate a list.
-
-    Args:
-    - lista: The list to paginate.
-    - page_number: The desired page number (starting from 1).
-    - page_size: The size of the page.
-
-    Returns:
-    - A tuple containing the current page and the total pages.
-    """
-
-    # Calculate the start and end index for the current page
-    start = (page_number - 1) * page_size
-    end = start + page_size
-
-    # Get the current page from the list
-    current_page = lista[start:end]
-
-    # Calculate the total pages
-    total_pages = len(lista) // page_size
-    if len(lista) % page_size != 0:
-        total_pages += 1
-
-    return current_page, total_pages
+    return jsonify({
+            'message': 'Reporte generado exitosamente',
+            'report': new_report
+        }), 200   
 
 
 
