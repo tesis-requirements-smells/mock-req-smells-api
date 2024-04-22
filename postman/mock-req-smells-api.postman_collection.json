@@ -7,88 +7,232 @@
 	},
 	"item": [
 		{
-			"name": "get-reports-resume",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/reqsmells/get-reports-resume",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"reqsmells",
-						"get-reports-resume"
-					]
+			"name": "Reportes",
+			"item": [
+				{
+					"name": "get-reports-resume",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/reqsmells/get-reports-resume",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"reqsmells",
+								"get-reports-resume"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-paged-reports-resume",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/reqsmells/get-reports-resume/1/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"reqsmells",
+								"get-reports-resume",
+								"1",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-report",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/reqsmells/delete-report/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"reqsmells",
+								"delete-report",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-report-detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/reqsmells/get-report/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"reqsmells",
+								"get-report",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "get-paged-reports-resume",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/reqsmells/get-reports-resume/2/3",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"reqsmells",
-						"get-reports-resume",
-						"2",
-						"3"
-					]
+			"name": "Datos-entrada",
+			"item": [
+				{
+					"name": "get-evaluation-data-by-status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/reqsmells/get-evaluation-data/DRAFT",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"reqsmells",
+								"get-evaluation-data",
+								"DRAFT"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-evaluation-data",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"input_data\": [\r\n        {\r\n            \"req_code\": \"HU001\",\r\n            \"req_name\": \"Revisar solicitudes de compra\",\r\n            \"req_data\": [\r\n                { \"key\": \"REQUIREMENT_DESCRIPTION\", \"value\": \"Como supervisor de compras, quiero poder revisar las solicitudes de compra realizadas por los departamentos internos para autorizar la adquisición de nuevos productos\" },\r\n                { \"key\": \"NRRDE\", \"value\": \"2\" },\r\n                { \"key\": \"TTCR\", \"value\": \"5\" },\r\n                { \"key\": \"NTREU\", \"value\": \"4\" }\r\n            ]\r\n        },\r\n        {\r\n            \"req_code\": \"HU002\",\r\n            \"req_name\": \"Incorporar artículos\",\r\n            \"req_data\": [\r\n                { \"key\": \"REQUIREMENT_DESCRIPTION\", \"value\": \"Como administrador del sistema, quiero poder incorporar nuevos artículos al inventario para mantener actualizado el catálogo\" },\r\n                { \"key\": \"NRRDE\", \"value\": \"2\" },\r\n                { \"key\": \"TTCR\", \"value\": \"5\" },\r\n                { \"key\": \"NTREU\", \"value\": \"4\" }\r\n            ]\r\n        },\r\n        {\r\n            \"req_code\": \"HU003\",\r\n            \"req_name\": \"registro\",\r\n            \"req_data\": [\r\n                { \"key\": \"REQUIREMENT_DESCRIPTION\", \"value\": \"Como administrador del sistema, quiero poder ver el total de ventas por día para identificar tendencias de venta\" },\r\n                { \"key\": \"NRRDE\", \"value\": \"2\" },\r\n                { \"key\": \"TTCR\", \"value\": \"5\" },\r\n                { \"key\": \"NTREU\", \"value\": \"4\" }\r\n            ]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/reqsmells/save-evaluation-data",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"reqsmells",
+								"save-evaluation-data"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-evaluation-data",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"input_id\": 3,\r\n    \"input_data\": [\r\n        {\r\n            \"req_code\": \"HU001\",\r\n            \"req_name\": \"Revisar solicitudes de compra version 2\",\r\n            \"req_data\": [\r\n                { \"key\": \"REQUIREMENT_DESCRIPTION\", \"value\": \"Como supervisor de compras, quiero poder revisar las solicitudes de compra realizadas por los departamentos internos para autorizar la adquisición de nuevos productos\" },\r\n                { \"key\": \"NRRDE\", \"value\": \"2\" },\r\n                { \"key\": \"TTCR\", \"value\": \"5\" },\r\n                { \"key\": \"NTREU\", \"value\": \"4\" }\r\n            ]\r\n        },\r\n        {\r\n            \"req_code\": \"HU002\",\r\n            \"req_name\": \"Incorporar artículos\",\r\n            \"req_data\": [\r\n                { \"key\": \"REQUIREMENT_DESCRIPTION\", \"value\": \"Como administrador del sistema, quiero poder incorporar nuevos artículos al inventario para mantener actualizado el catálogo\" },\r\n                { \"key\": \"NRRDE\", \"value\": \"2\" },\r\n                { \"key\": \"TTCR\", \"value\": \"5\" },\r\n                { \"key\": \"NTREU\", \"value\": \"4\" }\r\n            ]\r\n        },\r\n        {\r\n            \"req_code\": \"HU003\",\r\n            \"req_name\": \"registro version 2\",\r\n            \"req_data\": [\r\n                { \"key\": \"REQUIREMENT_DESCRIPTION\", \"value\": \"Como administrador del sistema, quiero poder ver el total de ventas por día para identificar tendencias de venta\" },\r\n                { \"key\": \"NRRDE\", \"value\": \"2\" },\r\n                { \"key\": \"TTCR\", \"value\": \"5\" },\r\n                { \"key\": \"NTREU\", \"value\": \"4\" }\r\n            ]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/reqsmells/save-evaluation-data",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"reqsmells",
+								"save-evaluation-data"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-evaluation-data",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/reqsmells/delete-evaluation-data/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"reqsmells",
+								"delete-evaluation-data",
+								"3"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "delete-report",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/reqsmells/delete-report/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"reqsmells",
-						"delete-report",
-						"1"
-					]
+			"name": "Evaluacion",
+			"item": [
+				{
+					"name": "evaluate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"input_id\": \"3\",\r\n    \"report_name\": \"Reporde # 3 generado desde postman\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/reqsmells/evaluate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"reqsmells",
+								"evaluate"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
-		},
-		{
-			"name": "get-report-detail",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/reqsmells/get-report/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"reqsmells",
-						"get-report",
-						"1"
-					]
-				}
-			},
-			"response": []
+			]
 		}
 	]
 }
