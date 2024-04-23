@@ -16,7 +16,7 @@ Simulación del API de la aplicación de detección de olores en los requisitos.
 <h3>2. Activar entorno virtual:</h3>
 <p>.\venv\Scripts\activate.bat</p>
 
-<h3>Inatalar librerias:</h3>
+<h3>Instalar librerias:</h3>
 <p>pip install -r requirements.txt</p>
 
 <h2>EJECUCIÓN</h2>

@@ -105,16 +105,25 @@ def get_evaluation_data_list(status:str):
 def save_evaluation_data():
     input_data = request.json
     evaluation_data = read_json(EVALUATION_DATA_URL)
+    input_id = None
 
     # Validar si se está creando una nueva evaluacion o actualizando
     if 'input_id' in input_data:
         input_id = int(input_data['input_id'])
 
-        # borrar registro viejo
-        evaluation_data = [d for d in evaluation_data if d['input_id'] != input_id] 
+        # Buscar registro a actualizar
+        raw_to_update = [d for d in evaluation_data if d['input_id'] == input_id]
+        
+        # Actualizar solo si existe el registro
+        if len(raw_to_update) >= 1:
+            evaluation_data = [d for d in evaluation_data if d['input_id'] != input_id]
+        else:
+            return jsonify({'message' : "No se pudo encontrar el registro para actualizar"}), 404
+        
     else:
         new_id = find_max_id(evaluation_data, 'input_id') + 1
         input_data['input_id'] = new_id
+        input_id = new_id
 
     # actualizar fecha de modificacion y estado
     input_data['input_modification_date'] = get_current_date()
@@ -123,7 +132,7 @@ def save_evaluation_data():
     evaluation_data.append(input_data)
     write_json(EVALUATION_DATA_URL, evaluation_data)
 
-    return jsonify({'message': "Datos de entrada guardados exitosamente"}), 200
+    return jsonify({'message': "Datos de entrada guardados exitosamente", 'input_data': input_data}), 200
 
 
 # Eliminar evaluacion
