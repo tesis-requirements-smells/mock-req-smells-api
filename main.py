@@ -1,11 +1,13 @@
 from flask import Flask
 from flask import jsonify
 from flask import request
+from flask_cors import CORS, cross_origin
 import random
 from utils import *
 
 
 app = Flask(__name__)
+CORS(app)
 
 BASE_URL = 'reqsmells'
 PORT = 8080
@@ -19,21 +21,40 @@ EVALUATION_DATA_URL = './data/evaluation-data.json'
 EVALUATION_EXAMPLE = './data/evaluation.json'
 
 
+@app.after_request
+def add_header(response):
+    response.headers['Access-Control-Allow-Origins'] = '*' #'http://localhost:8080,http://localhost:8081'
+    response.headers['Access-Control-Allow-Headers'] = 'Access-Control-Allow-Headers, Origin, X-Requested-With, Content-Type, Accept, Authorization'
+    response.headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS, HEAD'
+    response.headers['Access-Control-Expose-Headers'] = '*'
+    response.headers['Access-Control-Allow-Credentials'] = 'true'
+    return response
+
+
 # Listado de reportes resumido, sin paginación
 @app.route(f'/{BASE_URL}/get-reports-resume', methods=['GET'])
+@cross_origin(origin='*')
 def get_reports_resume(): 
     reports_resume = read_json(REPORTS_URL)
 
     # Devolver solo los campos de resumen
     reports_resume = [{field: d[field] for field in RESUME_FIELDS} for d in reports_resume]
 
-    return jsonify({
+    response = jsonify({
         'reports' : reports_resume
     })
+
+    #response.headers.add('Access-Control-Allow-Methods', '*')   
+    #response.headers.add('Access-Control-Allow-Headers', '*')
+    #response.headers.add('Access-Control-Allow-Origin', '*')
+    #response.headers.add('Access-Control-Allow-Credentials', '*')
+
+    return response
 
 
 # Listado de reportes resumido, paginado
 @app.route(f'/{BASE_URL}/get-reports-resume/<int:page>/<int:page_size>', methods=['GET'])
+@cross_origin(origin='*')
 def get_paged_reports_resume(page: int, page_size:int): 
     reports_resume = read_json(REPORTS_URL)
 
@@ -50,6 +71,7 @@ def get_paged_reports_resume(page: int, page_size:int):
 
 # Obtener detalle de un reporte
 @app.route(f'/{BASE_URL}/get-report/<int:report_id>', methods=['GET'])
+@cross_origin(origin='*')
 def get_get_report_by_id(report_id:int): 
     reports = read_json(REPORTS_URL)
 
@@ -67,6 +89,7 @@ def get_get_report_by_id(report_id:int):
 
 # Eliminar reporte
 @app.route(f'/{BASE_URL}/delete-report/<int:report_id>', methods=['DELETE'])
+@cross_origin(origin='*')
 def delete_report(report_id:int):    
     reports_resume = read_json(REPORTS_URL)
     previous_len = len(reports_resume)
@@ -88,6 +111,7 @@ def delete_report(report_id:int):
 # DRAFT: Evaluaciones pendientes
 # EVALUATED: Datos que ya se evaluaron
 @app.route(f'/{BASE_URL}/get-evaluation-data/<status>', methods=['GET'])
+@cross_origin(origin='*')
 def get_evaluation_data_list(status:str): 
     evaluation_data = read_json(EVALUATION_DATA_URL)
 
@@ -102,6 +126,7 @@ def get_evaluation_data_list(status:str):
 
 # Guardar datos de una evaluacion
 @app.route(f'/{BASE_URL}/save-evaluation-data', methods=['POST'])
+@cross_origin(origin='*')
 def save_evaluation_data():
     input_data = request.json
     evaluation_data = read_json(EVALUATION_DATA_URL)
@@ -137,6 +162,7 @@ def save_evaluation_data():
 
 # Eliminar evaluacion
 @app.route(f'/{BASE_URL}/delete-evaluation-data/<int:input_id>', methods=['DELETE'])
+@cross_origin(origin='*')
 def delete_evaluation_data(input_id:int):    
     evaluation_data = read_json(EVALUATION_DATA_URL)
     previous_len = len(evaluation_data)
@@ -155,6 +181,7 @@ def delete_evaluation_data(input_id:int):
 
 # Evaluar datos de entrada
 @app.route(f'/{BASE_URL}/evaluate', methods=['POST'])
+@cross_origin(origin='*')
 def evaluate_data():
     input_data = request.json
     input_id = int(input_data['input_id'])
@@ -189,4 +216,4 @@ def evaluate_data():
 
 
 if __name__ == "__main__":
-    app.run(port=PORT)
+    app.run(host='0.0.0.0', port=PORT, debug=True)
