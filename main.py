@@ -12,8 +12,9 @@ CORS(app)
 BASE_URL = 'reqsmells'
 PORT = 8080
 
-# Campos del reporte que deberian salir en el resumen
-RESUME_FIELDS = ['report_id', 'report_name', 'report_date', 'report_overall_score']
+# Campos del reporte que deberian salir en resumenes
+REPORTS_RESUME_FIELDS = ['report_id', 'report_name', 'report_date', 'report_overall_score']
+EVALUATIONS_RESUME_FIELDS = ['input_id', 'input_modification_date', 'input_status']
 
 # json files
 REPORTS_URL = './data/reports.json'
@@ -38,16 +39,11 @@ def get_reports_resume():
     reports_resume = read_json(REPORTS_URL)
 
     # Devolver solo los campos de resumen
-    reports_resume = [{field: d[field] for field in RESUME_FIELDS} for d in reports_resume]
+    reports_resume = [{field: d[field] for field in REPORTS_RESUME_FIELDS} for d in reports_resume]
 
     response = jsonify({
         'reports' : reports_resume
     })
-
-    #response.headers.add('Access-Control-Allow-Methods', '*')   
-    #response.headers.add('Access-Control-Allow-Headers', '*')
-    #response.headers.add('Access-Control-Allow-Origin', '*')
-    #response.headers.add('Access-Control-Allow-Credentials', '*')
 
     return response
 
@@ -59,7 +55,7 @@ def get_paged_reports_resume(page: int, page_size:int):
     reports_resume = read_json(REPORTS_URL)
 
     # Devolver solo los campos de resumen
-    reports_resume = [{field: d[field] for field in RESUME_FIELDS} for d in reports_resume]
+    reports_resume = [{field: d[field] for field in REPORTS_RESUME_FIELDS} for d in reports_resume]
     paged_list, pages_count = paginate_list(reports_resume, page, page_size)
 
     return jsonify({
@@ -72,7 +68,7 @@ def get_paged_reports_resume(page: int, page_size:int):
 # Obtener detalle de un reporte
 @app.route(f'/{BASE_URL}/get-report/<int:report_id>', methods=['GET'])
 @cross_origin(origin='*')
-def get_get_report_by_id(report_id:int): 
+def get_report_by_id(report_id:int): 
     reports = read_json(REPORTS_URL)
 
     # search
@@ -110,10 +106,13 @@ def delete_report(report_id:int):
 # ALL: todos
 # DRAFT: Evaluaciones pendientes
 # EVALUATED: Datos que ya se evaluaron
-@app.route(f'/{BASE_URL}/get-evaluation-data/<status>', methods=['GET'])
+@app.route(f'/{BASE_URL}/get-evaluation-resume/<status>', methods=['GET'])
 @cross_origin(origin='*')
 def get_evaluation_data_list(status:str): 
     evaluation_data = read_json(EVALUATION_DATA_URL)
+
+    # Devolver solo los campos de resumen
+    evaluation_data = [{field: d[field] for field in EVALUATIONS_RESUME_FIELDS} for d in evaluation_data]
 
     # Filtrar por estado
     if status != 'ALL':
@@ -122,6 +121,49 @@ def get_evaluation_data_list(status:str):
     return jsonify({
         'results' : evaluation_data
     })
+
+
+# Obtener listado de datos de evaluacion paginado, filtrados por estado
+# ALL: todos
+# DRAFT: Evaluaciones pendientes
+# EVALUATED: Datos que ya se evaluaron
+@app.route(f'/{BASE_URL}/get-evaluation-resume/<status>/<int:page>/<int:page_size>', methods=['GET'])
+@cross_origin(origin='*')
+def get_paged_evaluation_data_list(status:str, page: int, page_size:int): 
+    evaluation_data = read_json(EVALUATION_DATA_URL)
+
+    # Devolver solo los campos de resumen
+    evaluation_data = [{field: d[field] for field in EVALUATIONS_RESUME_FIELDS} for d in evaluation_data]
+
+    paged_list, pages_count = paginate_list(evaluation_data, page, page_size)
+
+    # Filtrar por estado
+    if status != 'ALL':
+        evaluation_data = [d for d in evaluation_data if d['input_status'] == status]
+
+    return jsonify({
+        'results' : paged_list,
+        'page': page,
+        'pages_count': pages_count
+    })
+
+
+# Obtener detalle de los datos de entrada de una evaluación
+@app.route(f'/{BASE_URL}/get-evaluation/<int:input_id>', methods=['GET'])
+@cross_origin(origin='*')
+def get_evaluation_by_id(input_id:int): 
+    evaluation_data = read_json(EVALUATION_DATA_URL)
+
+    # search
+    evaluation_data = [d for d in evaluation_data if d['input_id'] == input_id]
+    report = evaluation_data[0] if evaluation_data != None and len(evaluation_data) > 0 else None
+
+    # prepare response    
+    error_message = 'No se pudo encontrar los datos de entrada'
+    status = 200 if report != None else 404
+    response = {'results': report} if report != None else {'message': error_message}
+
+    return jsonify(response), status
 
 
 # Guardar datos de una evaluacion

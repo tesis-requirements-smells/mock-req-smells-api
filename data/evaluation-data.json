@@ -4,36 +4,86 @@
         "input_status": "EVALUATED",
         "input_modification_date": "2024-04-11T12:34:56",
         "report_id": 1,
-        "input_data": [
+        "input_data_by_requirement": [
             {
                 "req_code": "HU001",
                 "req_name": "Revisar solicitudes de compra",
                 "req_data": [
-                    { "key": "REQUIREMENT_DESCRIPTION", "value": "Como supervisor de compras, quiero poder revisar las solicitudes de compra realizadas por los departamentos internos para autorizar la adquisición de nuevos productos" },
-                    { "key": "NRRDE", "value": "2" },
-                    { "key": "TTCR", "value": "5" },
-                    { "key": "NTREU", "value": "4" }
+                    {
+                        "key": "REQUIREMENT_DESCRIPTION",
+                        "value": "Como supervisor de compras, quiero poder revisar las solicitudes de compra realizadas por los departamentos internos para autorizar la adquisici\u00f3n de nuevos productos"
+                    },
+                    {
+                        "key": "NRRDE",
+                        "value": "2"
+                    },
+                    {
+                        "key": "TTCR",
+                        "value": "5"
+                    },
+                    {
+                        "key": "NTREU",
+                        "value": "4"
+                    }
                 ]
             },
             {
                 "req_code": "HU002",
-                "req_name": "Incorporar artículos",
+                "req_name": "Incorporar art\u00edculos",
                 "req_data": [
-                    { "key": "REQUIREMENT_DESCRIPTION", "value": "Como administrador del sistema, quiero poder incorporar nuevos artículos al inventario para mantener actualizado el catálogo" },
-                    { "key": "NRRDE", "value": "2" },
-                    { "key": "TTCR", "value": "5" },
-                    { "key": "NTREU", "value": "4" }
+                    {
+                        "key": "REQUIREMENT_DESCRIPTION",
+                        "value": "Como administrador del sistema, quiero poder incorporar nuevos art\u00edculos al inventario para mantener actualizado el cat\u00e1logo"
+                    },
+                    {
+                        "key": "NRRDE",
+                        "value": "2"
+                    },
+                    {
+                        "key": "TTCR",
+                        "value": "5"
+                    },
+                    {
+                        "key": "NTREU",
+                        "value": "4"
+                    }
                 ]
             },
             {
                 "req_code": "HU003",
                 "req_name": "registro",
                 "req_data": [
-                    { "key": "REQUIREMENT_DESCRIPTION", "value": "Como administrador del sistema, quiero poder ver el total de ventas por día para identificar tendencias de venta" },
-                    { "key": "NRRDE", "value": "2" },
-                    { "key": "TTCR", "value": "5" },
-                    { "key": "NTREU", "value": "4" }
+                    {
+                        "key": "REQUIREMENT_DESCRIPTION",
+                        "value": "Como administrador del sistema, quiero poder ver el total de ventas por d\u00eda para identificar tendencias de venta"
+                    },
+                    {
+                        "key": "NRRDE",
+                        "value": "2"
+                    },
+                    {
+                        "key": "TTCR",
+                        "value": "5"
+                    },
+                    {
+                        "key": "NTREU",
+                        "value": "4"
+                    }
                 ]
+            }
+        ],
+        "global_input_data": [
+            {
+                "key": "NTR",
+                "value": "10"
+            },
+            {
+                "key": "NRRC",
+                "value": "4"
+            },
+            {
+                "key": "TTCR",
+                "value": "45"
             }
         ]
     },
@@ -42,26 +92,64 @@
         "input_status": "EVALUATED",
         "input_modification_date": "2024-04-11T12:34:56",
         "report_id": 2,
-        "input_data": [
+        "input_data_by_requirement": [
             {
                 "req_code": "HU001",
                 "req_name": "Revisar solicitudes de compra",
                 "req_data": [
-                    { "key": "REQUIREMENT_DESCRIPTION", "value": "Como supervisor de compras, quiero poder revisar las solicitudes de compra realizadas por los departamentos internos para autorizar la adquisición de nuevos productos" },
-                    { "key": "NRRDE", "value": "2" },
-                    { "key": "TTCR", "value": "5" },
-                    { "key": "NTREU", "value": "3" }
+                    {
+                        "key": "REQUIREMENT_DESCRIPTION",
+                        "value": "Como supervisor de compras, quiero poder revisar las solicitudes de compra realizadas por los departamentos internos para autorizar la adquisici\u00f3n de nuevos productos"
+                    },
+                    {
+                        "key": "NRRDE",
+                        "value": "2"
+                    },
+                    {
+                        "key": "TTCR",
+                        "value": "5"
+                    },
+                    {
+                        "key": "NTREU",
+                        "value": "3"
+                    }
                 ]
             },
             {
                 "req_code": "HU002",
-                "req_name": "Incorporar artículos",
+                "req_name": "Incorporar art\u00edculos",
                 "req_data": [
-                    { "key": "REQUIREMENT_DESCRIPTION", "value": "Como administrador del sistema, quiero poder incorporar nuevos artículos al inventario para mantener actualizado el catálogo" },
-                    { "key": "NRRDE", "value": "2" },
-                    { "key": "TTCR", "value": "2" },
-                    { "key": "NTREU", "value": "1" }
+                    {
+                        "key": "REQUIREMENT_DESCRIPTION",
+                        "value": "Como administrador del sistema, quiero poder incorporar nuevos art\u00edculos al inventario para mantener actualizado el cat\u00e1logo"
+                    },
+                    {
+                        "key": "NRRDE",
+                        "value": "2"
+                    },
+                    {
+                        "key": "TTCR",
+                        "value": "2"
+                    },
+                    {
+                        "key": "NTREU",
+                        "value": "1"
+                    }
                 ]
+            }
+        ],
+        "global_input_data": [
+            {
+                "key": "NTR",
+                "value": "14"
+            },
+            {
+                "key": "NRRC",
+                "value": "5"
+            },
+            {
+                "key": "TTCR",
+                "value": "45"
             }
         ]
     }

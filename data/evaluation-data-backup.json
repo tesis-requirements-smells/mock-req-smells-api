@@ -4,7 +4,7 @@
         "input_status": "EVALUATED",
         "input_modification_date": "2024-04-11T12:34:56",
         "report_id": 1,
-        "input_data": [
+        "input_data_by_requirement": [
             {
                 "req_code": "HU001",
                 "req_name": "Revisar solicitudes de compra",
@@ -35,6 +35,11 @@
                     { "key": "NTREU", "value": "4" }
                 ]
             }
+        ],
+        "global_input_data": [
+            { "key": "NTR", "value": "10"},
+            { "key": "NRRC", "value": "4"},
+            { "key": "TTCR", "value": "45"}
         ]
     },
     {
@@ -42,7 +47,7 @@
         "input_status": "EVALUATED",
         "input_modification_date": "2024-04-11T12:34:56",
         "report_id": 2,
-        "input_data": [
+        "input_data_by_requirement": [
             {
                 "req_code": "HU001",
                 "req_name": "Revisar solicitudes de compra",
@@ -63,6 +68,11 @@
                     { "key": "NTREU", "value": "1" }
                 ]
             }
+        ],
+        "global_input_data": [
+            { "key": "NTR", "value": "14"},
+            { "key": "NRRC", "value": "5"},
+            { "key": "TTCR", "value": "45"}
         ]
     }
 ]
