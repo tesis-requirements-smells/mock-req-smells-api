@@ -125,7 +125,7 @@
             ]
         }
     ],
-    "global_results": [
+    "results_general": [
         {
             "metric_id": 10,
             "metric_name": "Porcentaje de heterogeneidad de la terminología de los requisitos de software por el uso de sinónimos",

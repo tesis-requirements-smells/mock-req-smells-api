@@ -246,7 +246,7 @@ def evaluate_data():
         "report_date": get_current_date(),
         "report_overall_score": round(random.uniform(0, 100), 2),
         "results_by_requirement": evaluation['results_by_requirement'],
-        "global_results": evaluation['global_results']
+        "results_general": evaluation['results_general']
     }
     reports_resume.append(new_report)
     write_json(REPORTS_URL, reports_resume)
